@@ -1,3 +1,13 @@
+let score = 0
+
+if (localStorage) {
+  console.log('LocalStorage is supported!')
+  localStorage.setItem('user', score)
+  console.log(localStorage.getItem('user'))
+} else {
+  console.log('No support. Use a fallback such as browser cookies or store on the server.')
+}
+
 const cards = [{
         rank: 'queen',
         suit: 'hearts',
@@ -29,12 +39,15 @@ const checkForMatch = () => {
     let cardOneInPlay = cardsInPlay[0]
     let cardTwoInPlay = cardsInPlay[1]
 
-    if (cardOneInPlay === cardTwoInPlay) {
-        alert("Its a match!")
+    if (cardOneInPlay.rank === cardTwoInPlay.rank) {
+        console.log("Its a match!")
+        score ++
     } else {
-        alert("Its not a match!")
+        console.log("Its not a match!")
+        score --
     }
 }
+
 const flipCard = (e) => {
     const cardOnTheDom = e.target
     const cardId = cardOnTheDom.getAttribute('data-id')
@@ -54,7 +67,6 @@ const createBoard = () => {
         let cardElement = document.createElement('img')
         cardElement.src = 'images/back.png'
         cardElement.setAttribute('data-id', i)
-        let dataId = cardElement.getAttribute('data-id')
         cardElement.addEventListener('click', flipCard)
         gameBoard.appendChild(cardElement)
     }
