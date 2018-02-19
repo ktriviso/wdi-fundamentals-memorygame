@@ -40,10 +40,10 @@ const checkForMatch = () => {
     let cardTwoInPlay = cardsInPlay[1]
 
     if (cardOneInPlay.rank === cardTwoInPlay.rank) {
-        console.log("Its a match!")
+        alert("Its a match!")
         score ++
     } else {
-        console.log("Its not a match!")
+        alert("Its not a match!")
         score --
     }
 }
